@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import styles from './App.module.scss';
-import NavBar from './features/navbar/views/NavBar';
+import NavBar from './features/navbar/NavBar';
 import CharactersList from './features/characters-list/views/CharactersList';
 import FavoriteQuotes from './features/favorite-quotes/views/FavoriteQuotes';
 import CharacterInfo from './features/character-info/views/CharacterInfo';
