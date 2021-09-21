@@ -1,56 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import styles from './App.module.scss';
+import NavBar from './features/navbar/views/NavBar';
+import CharactersList from './features/characters-list/views/CharactersList';
+import FavoriteQuotes from './features/favorite-quotes/views/FavoriteQuotes';
+import CharacterInfo from './features/character-info/views/CharacterInfo';
+import CharacterQuotes from './features/character-quotes/views/CharacterQuotes';
+function App(props) {
+  console.log(props, CharacterQuotes);
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+    <div className={styles.app}>
+      <header className={styles.header}>
+        <NavBar />
       </header>
+      <main className={styles.main}>
+        <Switch>
+          <Route
+            path="/characters/:charName/quotes"
+            component={CharacterQuotes}
+          />
+          <Route path="/characters/:charld" component={CharacterInfo} />
+          <Route path="/characters" component={CharactersList} />
+          <Route path="/favorites" component={FavoriteQuotes} />
+          <Redirect from="/" to="/characters" />
+        </Switch>
+      </main>
     </div>
   );
 }
