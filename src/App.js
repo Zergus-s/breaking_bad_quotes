@@ -1,13 +1,13 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styles from './App.module.scss';
+import { fetchCaracters } from './features/characters-list/redux/CharactersSlice';
 import NavBar from './features/navbar/NavBar';
-import CharactersList from './features/characters-list/views/CharactersList';
-import FavoriteQuotes from './features/favorite-quotes/views/FavoriteQuotes';
-import CharacterInfo from './features/character-info/views/CharacterInfo';
-import CharacterQuotes from './features/character-quotes/views/CharacterQuotes';
-function App(props) {
-  console.log(props, CharacterQuotes);
+import Routes from './features/routing/Routes';
+
+function App() {
+  const dispatch = useDispatch();
+  dispatch(fetchCaracters());
 
   return (
     <div className={styles.app}>
@@ -15,16 +15,7 @@ function App(props) {
         <NavBar />
       </header>
       <main className={styles.main}>
-        <Switch>
-          <Route
-            path="/characters/:charName/quotes"
-            component={CharacterQuotes}
-          />
-          <Route path="/characters/:charld" component={CharacterInfo} />
-          <Route path="/characters" component={CharactersList} />
-          <Route path="/favorites" component={FavoriteQuotes} />
-          <Redirect from="/" to="/characters" />
-        </Switch>
+        <Routes />
       </main>
     </div>
   );
