@@ -1,18 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-const axios = require('axios');
+import axios from '../../../API/index';
 
 // const sendToLocalStorage = (item) => {
 //   localStorage.setItem('notes', JSON.stringify(item));
 // };
 
-export const fetchCaracters = createAsyncThunk(
+export const fetchCharacters = createAsyncThunk(
   'characters/getCharacters',
   async () => {
-    const data = await axios
-      .get('https://www.breakingbadapi.com/api/characters')
-      .then((result) => result);
-    return data.data;
+    const response = await axios.get('characters');
+
+    return response.data;
   }
 );
 
@@ -21,7 +19,7 @@ export const CharacterSlice = createSlice({
   initialState: { characters: [] },
   reducers: {},
   extraReducers: {
-    [fetchCaracters.fulfilled]: (state, action) => {
+    [fetchCharacters.fulfilled]: (state, action) => {
       state.characters = action.payload;
     },
   },

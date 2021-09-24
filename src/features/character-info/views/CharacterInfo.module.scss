@@ -1,0 +1,56 @@
+@import '../../../index.scss';
+
+.characterWrapperInfo {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+
+  h1 {
+    font-weight: bolder;
+  }
+
+  div {
+    color: $gray;
+    div {
+      font-size: 1.2rem;
+      margin-top: 5px;
+      div {
+        display: inline-block;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .thumb {
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+
+  .text {
+    font-weight: bolder;
+  }
+
+  .link {
+    margin-top: 20px;
+
+    a {
+      text-decoration: none;
+      color: white;
+      background-color: $green;
+      padding: 10px 15px 10px 15px;
+      border-radius: 5px;
+      font-weight: bolder;
+      border: 1px solid $green;
+      &:hover {
+        background-color: white;
+        color: $green;
+      }
+    }
+  }
+}

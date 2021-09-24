@@ -19,7 +19,7 @@ function Routes() {
       <Route path={RoutePath.CHARACTER} component={CharacterInfo} />
       <Route path={RoutePath.CHARACTERS} component={CharactersList} />
       <Route path={RoutePath.FAVORITES} component={FavoriteQuotes} />
-      <Redirect to="/characters" />
+      <Redirect to={RoutePath.CHARACTERS} />
     </Switch>
   );
 }

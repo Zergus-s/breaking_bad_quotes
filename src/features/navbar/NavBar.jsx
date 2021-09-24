@@ -6,19 +6,15 @@ import { RoutePath } from '../routing/Routes';
 export default function NavBar() {
   return (
     <nav className={styles.navbarContainer}>
-      <ul>
-        <li className={styles.banner}>BREAKING BAD QUOTES</li>
-        <li className={styles.characters_link}>
-          <NavLink activeClassName={styles.active} to={RoutePath.CHARACTERS}>
-            CHARACTERS
-          </NavLink>
-        </li>
-        <li className={styles.favorites_link}>
-          <NavLink activeClassName={styles.active} to={RoutePath.FAVORITES}>
-            FAVORITES
-          </NavLink>
-        </li>
-      </ul>
+      <div className={styles.banner}>BREAKING BAD QUOTES</div>
+      <div>
+        <NavLink className={styles.navItem} to={RoutePath.CHARACTERS}>
+          CHARACTERS
+        </NavLink>
+        <NavLink className={styles.navItem} to={RoutePath.FAVORITES}>
+          FAVORITES
+        </NavLink>
+      </div>
     </nav>
   );
 }

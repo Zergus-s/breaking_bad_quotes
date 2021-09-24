@@ -24,7 +24,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
-
+    'react/prop-types': 'off',
     'no-unused-vars': 'warn',
   },
 };

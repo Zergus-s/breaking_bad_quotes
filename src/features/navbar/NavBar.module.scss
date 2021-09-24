@@ -1,35 +1,34 @@
+@import '../../index.scss';
+
 .navbarContainer {
+  background-color: $green;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  position: fixed;
   width: 100%;
-  height: 100%;
-  display: inline-flex;
-  ul {
-    float: right;
-    height: 100%;
-    list-style: none;
-    width: 100%;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    .banner {
+  top: 0;
+
+  .banner {
+    color: white;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 1.4rem;
+  }
+
+  .navItem {
+    background-color: white;
+    color: $green;
+    padding: 0.7rem;
+    text-decoration: none;
+    font-weight: bolder;
+    margin-left: 1rem;
+    border-radius: 3px;
+    border: 1px solid white;
+
+    &:hover {
+      background-color: $green;
       color: white;
-      font-size: x-large;
-      font-weight: 700;
-      margin: 1em;
-      margin-right: auto;
-    }
-    li {
-      margin: 0.5rem;
-      a {
-        color: rgb(65, 61, 61);
-        text-decoration: none;
-      }
-      a:active,
-      a:hover,
-      a.active {
-        color: #f1f7ff;
-      }
     }
   }
 }
