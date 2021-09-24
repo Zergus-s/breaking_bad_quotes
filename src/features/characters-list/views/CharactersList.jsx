@@ -8,7 +8,7 @@ import { fetchCharacters } from '../redux/CharactersSlice';
 
 import styles from './CharactersList.module.scss';
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 10;
 
 export default function CharactersList() {
   const { characters } = useSelector((state) => state.characters);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, generatePath } from 'react-router-dom';
 import { RoutePath } from '../../routing/Routes';
 import styles from './Character.module.scss';
 
@@ -12,10 +12,9 @@ function Character({ item }) {
       <div className={styles.info}>
         <div className={styles.name}>{item.name}</div>
         <div className={styles.nickname}>{item.nickname}</div>
-
         <NavLink
           className={styles.link}
-          to={RoutePath.CHARACTER + ':' + item.char_id}
+          to={generatePath(RoutePath.CHARACTER, { charId: item.char_id })}
         >
           View info
         </NavLink>

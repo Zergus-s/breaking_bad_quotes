@@ -1,10 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../API/index';
 
-// const sendToLocalStorage = (item) => {
-//   localStorage.setItem('notes', JSON.stringify(item));
-// };
-
 export const fetchCharacters = createAsyncThunk(
   'characters/getCharacters',
   async () => {
@@ -16,15 +12,21 @@ export const fetchCharacters = createAsyncThunk(
 
 export const CharacterSlice = createSlice({
   name: 'characters',
-  initialState: { characters: [] },
+  initialState: { characters: [], status: null },
   reducers: {},
   extraReducers: {
+    [fetchCharacters.pending]: (state) => {
+      state.status = 'loading';
+    },
     [fetchCharacters.fulfilled]: (state, action) => {
       state.characters = action.payload;
+      state.status = 'success';
+    },
+    [fetchCharacters.rejected]: (state, action) => {
+      state.status = 'failed';
+      console.error(action.error.message, 'characters');
     },
   },
 });
-
-// export const {  } = CharacterSlice.actions;
 
 export default CharacterSlice.reducer;
