@@ -12,44 +12,42 @@ export default function CharacterInfo(props) {
   useEffect(() => {
     dispatch(fetchCharactersInfo(`characters/${id}`));
   }, []);
-  const { characters, status } = useSelector((state) => state.charInfo);
+  const { character, status } = useSelector((state) => state.charInfo);
   const dispatch = useDispatch();
-
-  const item = characters.filter((item) => item.char_id === +id)[0];
 
   switch (status) {
     case 'failed':
       return <h1>Error</h1>;
-    case 'loading' || 'null':
+    case 'loading' || null || character === undefined:
       return <h1>Loading</h1>;
     case 'success':
       return (
         <div className={styles.characterWrapperInfo}>
           <h1>Character Info</h1>
           <div className={styles.thumb}>
-            <img src={item.img} alt={item.name} />
+            <img src={character.img || null} alt={character.name} />
           </div>
           <div className={styles.info}>
             <div>
               <div className={styles.text}>Name: </div>
-              {item.name}
+              {character.name}
             </div>
             <div>
               <div className={styles.text}>Nickname: </div>
-              {item.nickname}
+              {character.nickname}
             </div>
             <div>
               <div className={styles.text}>Birthday: </div>
-              {item.birthday}
+              {character.birthday}
             </div>
             <div>
               <div className={styles.text}>Status: </div>
-              {item.status}
+              {character.status}
             </div>
             <div className={styles.link}>
               <NavLink
                 to={generatePath(`${RoutePath.CHARACTER_QUOTES}`, {
-                  charName: encodeURIComponent(item.name),
+                  charName: encodeURIComponent(character.name),
                 })}
               >
                 View Quotes

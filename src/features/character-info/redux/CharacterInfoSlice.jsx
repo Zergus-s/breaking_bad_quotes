@@ -12,14 +12,14 @@ export const fetchCharactersInfo = createAsyncThunk(
 
 export const CharacterInfoSlice = createSlice({
   name: 'character-info',
-  initialState: { characters: [], status: null },
+  initialState: { character: [], status: null },
   reducers: {},
   extraReducers: {
     [fetchCharactersInfo.pending]: (state) => {
       state.status = 'loading';
     },
     [fetchCharactersInfo.fulfilled]: (state, action) => {
-      state.characters = action.payload;
+      state.character = action.payload[0];
       state.status = 'success';
     },
     [fetchCharactersInfo.rejected]: (state, action) => {

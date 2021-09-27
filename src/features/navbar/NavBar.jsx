@@ -8,7 +8,11 @@ export default function NavBar() {
     <nav className={styles.navbarContainer}>
       <div className={styles.banner}>BREAKING BAD QUOTES</div>
       <div>
-        <NavLink className={styles.navItem} to={RoutePath.CHARACTERS}>
+        <NavLink
+          className={styles.navItem}
+          to={RoutePath.CHARACTERS}
+          // + '?page=1'
+        >
           CHARACTERS
         </NavLink>
         <NavLink className={styles.navItem} to={RoutePath.FAVORITES}>

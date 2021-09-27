@@ -11,7 +11,7 @@ import styles from './CharactersList.module.scss';
 const ITEMS_PER_PAGE = 10;
 
 export default function CharactersList() {
-  const { characters } = useSelector((state) => state.characters);
+  const { characters, status } = useSelector((state) => state.characters);
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -23,7 +23,7 @@ export default function CharactersList() {
       setPage(1);
     }
     dispatch(fetchCharacters());
-  }, []);
+  }, [currentPage]);
 
   const setPage = (newPage) => {
     searchParams.set('page', newPage);
@@ -38,17 +38,28 @@ export default function CharactersList() {
 
   const totalPages = Math.ceil(characters.length / ITEMS_PER_PAGE);
 
-  return (
-    <div className={styles.characterList}>
-      <h2>Characters</h2>
-      {getSlicedCharacters().map((item) => {
-        return <Character item={item} key={item.id + item.name} />;
-      })}
-      <Pagination
-        currentPage={+currentPage}
-        lastPage={totalPages}
-        setPage={setPage}
-      />
-    </div>
-  );
+  switch (status) {
+    case 'failed':
+      console.error();
+      break;
+    case 'loading':
+      return <h1>Loading</h1>;
+    case 'success':
+      return (
+        <div className={styles.characterList}>
+          <h2>Characters</h2>
+          {getSlicedCharacters().map((item) => {
+            return <Character item={item} key={item.id + item.name} />;
+          })}
+          <Pagination
+            currentPage={+currentPage}
+            lastPage={totalPages}
+            setPage={setPage}
+          />
+        </div>
+      );
+
+    default:
+      return null;
+  }
 }
