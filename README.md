@@ -1,14 +1,5 @@
 To run this application in browser, open this link https://zergus-s.github.io/breaking_bad_quotes/build
-/
-/
-/
-/
-/
-/
-/
-/
-/
-/
+
 
 
 
